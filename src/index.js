@@ -15,7 +15,7 @@ plugin = function(opts) {
 
             // clean possible <p> tags around
             // the shortcodes that the markdown parser creates
-            cnt = cnt.replace(/(<p>)(\[.*?\])(<\/p>)/gi, function(all, p, code) {
+            cnt = cnt.replace(/(<p>)(\[.*?\])(<\/p>)/gi, (all, p, code) => {
                 return code;
             });
 
