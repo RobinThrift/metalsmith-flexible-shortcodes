@@ -13,11 +13,13 @@ plugin = function(opts) {
         each(files, (file, path) => {
             var cnt = file.contents.toString();
 
-            // clean possible <p> tags around
-            // the shortcodes that the markdown parser creates
-            cnt = cnt.replace(/(<p>)(\[.*?\])(<\/p>)/gi, (all, p, code) => {
-                return code;
-            });
+            if (opts.clean) {
+                // clean possible <p> tags around
+                // the shortcodes that the markdown parser creates
+                cnt = cnt.replace(/(<p>)(\[.*?\])(<\/p>)/gi, (all, p, code) => {
+                    return code;
+                });
+            }
 
             file.contents = new Buffer(shortcode.parse(cnt));
         });
