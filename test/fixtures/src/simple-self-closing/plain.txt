@@ -1,0 +1,4 @@
+---
+title: Plain
+---
+This shows a simple self enclosing shortcode in plain text: [makro]
