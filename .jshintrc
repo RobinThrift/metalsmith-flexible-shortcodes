@@ -1,0 +1,11 @@
+{
+    "camelcase": true,
+    "curly": true,
+    "indent": 4,
+    "noempty": true,
+    "quotmark": "single",
+    "undef": true,
+    "unused": true,
+    "esnext": true,
+    "node": true
+}
