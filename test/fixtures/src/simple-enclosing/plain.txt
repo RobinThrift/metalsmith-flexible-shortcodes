@@ -1,5 +1,6 @@
 ---
 title: Plain
+shortcodes: true
 ---
 This shows a simple enclosing shortcode in plain text:
 [div]

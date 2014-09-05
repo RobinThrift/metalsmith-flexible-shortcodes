@@ -68,7 +68,8 @@ describe('metalsmith flexible shortcodes', function() {
                     div: function(str) {
                         return '<div>\n' + str + '\n</div>';
                     }
-                }
+                },
+                clean: true
             },
             fn: require('..')
         }], function() {
