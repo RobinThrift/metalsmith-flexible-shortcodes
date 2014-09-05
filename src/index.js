@@ -1,5 +1,6 @@
 var shortcode = require('shortcode-parser'),
-    each       = require('lodash.forEach'),
+    each      = require('lodash.forEach'),
+    merge     = require('lodash.merge'),
     plugin;
 
 
@@ -12,7 +13,8 @@ plugin = function(opts) {
     return (files, metalsmith, done) => {
         each(files, (file, path) => {
             if (!file.shortcodes) { return; }
-            var cnt = file.contents.toString();
+            var cnt = file.contents.toString(),
+                data = merge({}, file, metalsmith.metadata()); 
 
             if (opts.clean) {
                 // clean possible <p> tags around
@@ -22,7 +24,7 @@ plugin = function(opts) {
                 });
             }
 
-            file.contents = new Buffer(shortcode.parse(cnt));
+            file.contents = new Buffer(shortcode.parse(cnt, data));
         });
         done();
     };

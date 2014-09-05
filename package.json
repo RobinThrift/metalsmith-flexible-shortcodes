@@ -1,6 +1,6 @@
 {
   "name": "metalsmith-flexible-shortcodes",
-  "version": "0.3.1",
+  "version": "0.4.1",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -17,8 +17,9 @@
   },
   "homepage": "https://github.com/RobinThrift/metalsmith-flexible-shortcodes",
   "dependencies": {
-    "shortcode-parser": "0.0.1",
-    "lodash.foreach": "^2.4.1"
+    "lodash.foreach": "^2.4.1",
+    "lodash.merge": "^2.4.1",
+    "shortcode-parser": "0.0.1"
   },
   "devDependencies": {
     "should": "^4.0.0",

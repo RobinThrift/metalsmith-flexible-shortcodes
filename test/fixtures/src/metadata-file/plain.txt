@@ -1,0 +1,7 @@
+---
+title: Plain
+shortcodes: true
+test: 'Hello'
+---
+This should be 'Hello':  
+[var test]

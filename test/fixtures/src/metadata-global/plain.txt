@@ -1,0 +1,6 @@
+---
+title: Plain
+shortcodes: true
+---
+This should be 'Hello':  
+[var globalTest]

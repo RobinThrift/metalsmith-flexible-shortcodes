@@ -78,4 +78,53 @@ describe('metalsmith flexible shortcodes', function() {
         });
     });
 
+    it('use file metadata', function(done) {
+        msFactory('metadata-file', [{
+            opts: {
+                shortcodes: {
+                    'var': function(str, params, data) {
+                        for (var name in params) {
+                            return data[name];
+                        }
+                    }
+                },
+                clean: true
+            },
+            fn: require('..')
+        }], function() {
+            dirEqual(path.join(__dirname, 'tmp'), path.join(__dirname, 'fixtures/expected/metadata-file'));
+            done();
+        });
+    });
+
+    it('use global metadata', function(done) {
+        msFactory('metadata-global', [{
+            opts: {},
+            fn: function() {
+                return function(files, metalsmith, done) {
+                    metalsmith.metadata({
+                        globalTest: 'Hello'
+                    });
+                    done();
+                };
+            }
+        },
+        {
+            opts: {
+                shortcodes: {
+                    'var': function(str, params, data) {
+                        for (var name in params) {
+                            return data[name];
+                        }
+                    }
+                },
+                clean: true
+            },
+            fn: require('..')
+        }], function() {
+            dirEqual(path.join(__dirname, 'tmp'), path.join(__dirname, 'fixtures/expected/metadata-file'));
+            done();
+        });
+    });
+
 });
