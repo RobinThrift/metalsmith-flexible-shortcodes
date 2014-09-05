@@ -11,6 +11,7 @@ plugin = function(opts) {
 
     return (files, metalsmith, done) => {
         each(files, (file, path) => {
+            if (!file.shortcodes) { return; }
             var cnt = file.contents.toString();
 
             if (opts.clean) {
