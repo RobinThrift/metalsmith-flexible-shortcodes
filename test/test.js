@@ -31,8 +31,8 @@ function msFactory(dir, plugins, done) {
 
 describe('metalsmith flexible shortcodes', function() {
 
-    beforeEach(function(){
-        rm(path.join(__dirname, 'tmp/*'));
+    beforeEach(function() {
+        rm(path.join(__dirname, 'tmp'));
     });
 
     it('simple self closing shortcodes', function(done) {
