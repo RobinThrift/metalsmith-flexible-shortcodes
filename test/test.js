@@ -27,7 +27,7 @@ function msFactory(dir, plugins, done) {
         if (err) { throw err; }
         done();
     });
-};
+}
 
 describe('metalsmith flexible shortcodes', function() {
 
