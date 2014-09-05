@@ -7,5 +7,6 @@
     "undef": true,
     "unused": true,
     "esnext": true,
-    "node": true
+    "node": true,
+    "mocha": true
 }
