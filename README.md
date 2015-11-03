@@ -6,7 +6,7 @@ way you expected (and how they work in WordPress, unlike stated).
 This aims to be a lot closer to the way the shortcodes work in WordPress:
 `[foo param1="bar" param2="baz"]`
 
-Internally this plugin uses [shortcode-parser](https://github.com/derdesign/shortcode-parser) to parse and render the shortcodes.
+Internally this plugin uses [meta-shortcodes](https://www.npmjs.com/package/meta-shortcodes) to parse and render the shortcodes.
 
 
 ##Examples
@@ -35,7 +35,7 @@ Metalsmith(__dirname)
     }))
 ```
 
-For more infos on how the shortcodes work check out [shortcode-parser](https://github.com/derdesign/shortcode-parser).
+For more infos on how the shortcodes work check out [meta-shortcodes](https://www.npmjs.com/package/meta-shortcodes).
 
 ##Options
 
@@ -52,7 +52,7 @@ An object with key value pairs, where each key represents the shortcode name, e.
     }
 }
 ```
-Can then be used as `[flickr]` in your files.
+Can then be used as `[flickr /]` in your files.
 
 
 ### `clean` 
