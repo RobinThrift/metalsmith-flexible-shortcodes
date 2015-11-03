@@ -1,20 +1,31 @@
-var shortcode = require('shortcode-parser'),
+var ShortcodeParser = require('meta-shortcodes'),
     each      = require('lodash.forEach'),
     merge     = require('lodash.merge'),
+    parser    = new ShortcodeParser(),
     plugin;
 
 
 plugin = function(opts) {
     // loop through all the registered shortcodes
-    each(opts.shortcodes, (fn, name) => {
-        shortcode.add(name, fn);
-    });
+    var generated = false,
+        generateShortcodes = (data) => {
+            if (!generated) {
+                each(opts.shortcodes, (fn, name) => {
+                    parser.add(name, (opts, content) => {
+                        return fn(content, opts, data);
+                    });
+                });
+                generated = true;
+            }
+        } 
 
     return (files, metalsmith, done) => {
         each(files, (file, path) => {
             if (!file.shortcodes) { return; }
             var cnt = file.contents.toString(),
                 data = merge({}, file, metalsmith.metadata()); 
+
+            generateShortcodes(data);
 
             if (opts.clean) {
                 // clean possible <p> tags around
@@ -24,7 +35,7 @@ plugin = function(opts) {
                 });
             }
 
-            file.contents = new Buffer(shortcode.parse(cnt, data));
+            file.contents = new Buffer(parser.parse(cnt));
         });
         done();
     };
